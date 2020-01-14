@@ -23,6 +23,8 @@ void showHist(cv::Mat); // show the histogram
 void equalized(cv::Mat);
 void lomo(cv::Mat);
 void cartoon(cv::Mat);
+void understandMat(cv::Mat); // understand the cv::Mat
+void imageROI(cv::Mat); // Region of Interest 
 
 static void onMouse(int, int, int, int, void*); // mouse callback function
 static void onChange(int, void*); // slider bar callback function
@@ -51,7 +53,9 @@ int main(int argc, char const *argv[])
 	//showHist(img);
 	//equalized(img);
 	//lomo(img);
-	cartoon(img);
+	//cartoon(img);
+	understandMat(img);
+	imageROI(img);
 
 	cv::waitKey(0); // press any key to exit
 	cv::destroyAllWindows(); // close all windows
@@ -185,7 +189,7 @@ void showHist(cv::Mat img) {
 
 	int binStep = cvRound(static_cast<float>(width) / static_cast<float>(numRange));
 	for (int i = 1; i < numRange; i++) { // draw a horizontal line segment from i - 1 to i
-    	cv::line(histImg,
+		cv::line(histImg,
 				 cv::Point(binStep * (i - 1), heigth - cvRound(b_hist.at<float>(i-1))),
 				 cv::Point(binStep * i, heigth - cvRound(b_hist.at<float>(i))),
 				 cv::Scalar(255, 0, 0));
@@ -268,4 +272,57 @@ void cartoon(cv::Mat img) { // cartoon effect
 	cv::multiply(resultf, imgCanny3C, resultf); // multiply color and edge matrix
 	resultf.convertTo(result, CV_8UC3); // convert 'result' to 8-bit image
 	cv::imshow("Cartoon", result);
+}
+
+void understandMat(cv::Mat img) {
+	cv::Mat img1(240, 320, CV_8U, 100);
+	cv::imshow("Image", img1);
+	cv::waitKey(0);
+
+	cv::Mat img2(240, 320, CV_8UC3, cv::Scalar(0, 0, 255));
+	cv::imshow("Image", img2);
+	cv::waitKey(0);
+
+	cv::Mat img3 = img;
+
+	cv::Mat img4(img3);
+	img1 = img3;
+
+	img3.copyTo(img2);
+	cv::Mat img5 = img3.clone();
+
+	cv::flip(img3, img3, 1); // 0: H, 1: V
+
+	cv::imshow("Image 3", img3);
+	cv::imshow("Image 1", img1);
+	cv::imshow("Imgae 2", img2);
+	cv::imshow("Image 4", img4);
+	cv::imshow("Image 5", img5);
+	cv::waitKey(0);
+
+	cv::Mat gray(500, 500, CV_8U, 50);
+
+	cv::imshow("Image", gray);
+	cv::waitKey(0);
+
+	img1 = img;
+	img1.convertTo(img2, CV_32F, 1 / 255, 0);
+	cv::imshow("Image", img2);
+	cv::waitKey(0);
+}
+
+void imageROI(cv::Mat img) {
+	cv::putText(img, "IMG",
+				cv::Point(100, 400),
+				cv::FONT_HERSHEY_PLAIN,
+				10, 255, 5);
+	// img(cv::Range(480, 20), cv::Range(480, 20));
+	// img.colRange(start, end)/img.rowRange(start, end)
+	cv::Mat imageROI(img, // Region of Interest
+					 cv::Rect(400, 400, 100, 100));
+	cv::Mat logo(100, 100, CV_8UC3, cv::Scalar(0, 255, 0)); // BGR format
+	cv::Mat mask(logo);
+	logo.copyTo(imageROI, mask);
+	cv::imshow("Original Image", img);
+	std::cout << img.channels() << std::endl;
 }
