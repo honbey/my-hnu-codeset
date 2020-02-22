@@ -55,4 +55,19 @@ Simple implementation of linear block codes.
 ### Learn OpenCV
 Record the procedures of learning OpenCV.
 
+#### cv-01
+Simple image processing.
+
+#### cv-02
+Image processing, recognition and classification.
+
+#### cv-03
+Recognize faces, eyes, and process video images.
+
+#### cv-04
+Video surveillance, background modeling and morphological operations.
+
+#### cv-05
+Object tracking.
+
 ---
