@@ -23,6 +23,8 @@ void drawPred(int, float, int, int, int, int, cv::Mat&);
 void postprocess(cv::Mat&, const std::vector<cv::Mat>&);
 std::vector<cv::String> getOutputsNames(const cv::dnn::Net&);
 
+void ssdFace(cv::Mat);
+
 int main(int argc, char const *argv[]) {
 	if (argc != 2) { // parameter error
 		//std::cout << "Usage: ./Testing <Image Path>" << std::endl;
@@ -43,7 +45,7 @@ int main(int argc, char const *argv[]) {
 	cv::dnn::Net net = cv::dnn::readNetFromDarknet(modelConfiguration, modelWeights); // load the network
 	net.setPreferableBackend(cv::dnn::DNN_BACKEND_OPENCV);
 	net.setPreferableTarget(cv::dnn::DNN_TARGET_CPU);
-	// create a 4D blob from a frame
+	// create a 4D blob from a image
 	cv::dnn::blobFromImage(input, blob, 1 / 255.0, 
 		cv::Size(inpWidth, inpHeight), cv::Scalar(0, 0, 0), true, false);
 	net.setInput(blob); //sets the input to the network
@@ -59,6 +61,7 @@ int main(int argc, char const *argv[]) {
 
 	cv::imshow("Deep Learning", input);
 	//cv::imwrite("result.jpg", input);
+	ssdFace(input);
 
 	cv::waitKey(0);
 	cv::destroyAllWindows();
@@ -134,4 +137,53 @@ std::vector<cv::String> getOutputsNames(const cv::dnn::Net& net) { // get the na
 		}
 	}
 	return names;
+}
+
+void ssdFace(cv::Mat input) {
+	const size_t inWidth = 300;
+	const size_t inHeight = 300;
+	const double inScaleFactor = 1.0;
+	const cv::Scalar meanVal(104.0, 177.0, 123.0);
+	cv::String modelConfiguration = "../../../data/ml/deploy.prototxt.txt";
+	cv::String modelBinary = "../../../data/ml/res10_300x300_ssd_iter_140000.caffemodel";
+	cv::dnn::Net net = cv::dnn::readNetFromCaffe(modelConfiguration, modelBinary);
+	if (net.empty()) return;
+	if (input.empty()) return;
+	if (input.channels() == 4) cv::cvtColor(input, input, cv::COLOR_BGRA2BGR);
+
+	cv::Mat inputBlob = cv::dnn::blobFromImage(input, inScaleFactor, 
+		cv::Size(inWidth, inHeight), meanVal, false, false); //Convert Mat to batch of images
+	net.setInput(inputBlob, "data"); //set the network input
+
+	cv::Mat detection = net.forward("detection_out"); //compute output
+	std::vector<double> layersTimings;
+
+	cv::Mat detectionMat(detection.size[2], detection.size[3], CV_32F, detection.ptr<float>());
+
+	float confidenceThreshold = 0.5;
+	for(auto i = 0; i < detectionMat.rows; i++) {
+		float confidence = detectionMat.at<float>(i, 2);
+		if(confidence > confidenceThreshold) {
+			int xLeftBottom = static_cast<int>(detectionMat.at<float>(i, 3) * input.cols);
+			int yLeftBottom = static_cast<int>(detectionMat.at<float>(i, 4) * input.rows);
+			int xRightTop = static_cast<int>(detectionMat.at<float>(i, 5) * input.cols);
+			int yRightTop = static_cast<int>(detectionMat.at<float>(i, 6) * input.rows);
+
+			cv::Rect object((int)xLeftBottom, (int)yLeftBottom,
+				(int)(xRightTop - xLeftBottom),
+				(int)(yRightTop - yLeftBottom));
+			cv::rectangle(input, object, cv::Scalar(0, 255, 0));
+
+			std::cout << "Face: " << confidence << std::endl;
+			cv::String label = "Face";
+			int baseLine = 0;
+			cv::Size labelSize = cv::getTextSize(label, cv::FONT_HERSHEY_SIMPLEX, 0.5, 1, &baseLine);
+			cv::rectangle(input, cv::Rect(cv::Point(xLeftBottom, yLeftBottom - labelSize.height),
+			cv::Size(labelSize.width, labelSize.height + baseLine)),
+			cv::Scalar(255, 255, 255), cv::FILLED);
+			cv::putText(input, label, cv::Point(xLeftBottom, yLeftBottom),
+				cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(0, 0, 0));
+		}
+	}
+	cv::imshow("Result", input);
 }
