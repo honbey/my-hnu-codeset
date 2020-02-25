@@ -37,12 +37,7 @@ ListNode<T> * List<T>::find(T const &e, int n, ListNode<T> *p) const {
 
 template<typename T>
 ListNode<T> * List<T>::search(T const &e, int n, ListNode<T> *p) const {
-	/*for( ; 0 <= n; n--)
-		if(((p->pred)->data) <= e) break;*/
-	do {
-		p = p->pred;
-		n--;
-	} while ( ( -1 < n ) && ( e < p->data ) ); 
+	for(p = p->pred; (0 < n) && (e < p->data); n--) p = p->pred;
 	return p;
 }
 
@@ -51,7 +46,7 @@ ListNode<T> * List<T>::selectMax(ListNode<T> *p, int n){
 	ListNode<T> *M = p;
 	for(ListNode<T> *temp = p; 1 < n; n--) {
 		temp = temp->succ;
-		if(temp->data > M->data) M = temp; //(!lt((temp = temp->succ)->data, M->data))
+		if(temp->data > M->data) M = temp;
 	}
 	return M;
 }
