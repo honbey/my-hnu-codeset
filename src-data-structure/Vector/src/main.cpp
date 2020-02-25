@@ -3,7 +3,7 @@
  * 
  * Honbey, honbey@honbey.com
  * Created On 2019-09-06
- * Copyright (c) 2019 - 2020. All rights reserved.
+ * Copyright (c) 2019-2020. All rights reserved.
  * 
  * Date: 2020-02-24
  * Version: 0.2.0

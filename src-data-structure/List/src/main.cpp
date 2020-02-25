@@ -5,8 +5,8 @@
  * Created On 2019-09-06
  * Copyright (c) 2019-2020. All rights reserved.
  * 
- * Date: 2020-02-24
- * Version: 0.2.0
+ * Date: 2020-02-25
+ * Version: 0.3.0
  * 
  * Description: Learning DSA(Data Structure & Algorithms).
  *   List and some algorithms.
@@ -15,6 +15,7 @@
  * History: 
  * <author> <time> <version > <desc>
  * Honbey 2019-09-06 0.1.0 Main frame
+ * Honbey 2020-02-24 0.2.0 Code normalization
  ******************************************************************************************/
 
 #include <iostream>
