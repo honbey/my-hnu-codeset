@@ -21,7 +21,7 @@
 #include <iostream>
 #include <ctime>
 
-#include "list.h"
+#include "list/list.h"
 
 #define N 100
 
