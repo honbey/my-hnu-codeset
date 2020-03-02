@@ -20,7 +20,7 @@
 #include <iostream>
 #include <ctime>
 
-#include "vector.h"
+#include "vector/vector.h"
 
 #define N 100
 
@@ -29,6 +29,7 @@ void display(int);
 int main(int argc, char const *argv[]) {
 	// Test data
 	srand((unsigned)time(NULL));
+	printf("Data-Time:%s  %s\nFileName:%s\nLine:%d\n", __DATE__, __TIME__, __FILE__, __LINE__);
 	int testArray[N];
 	for(int i = 0; i < N; i++) {
 		testArray[i] = rand() % (2 * N);

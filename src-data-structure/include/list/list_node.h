@@ -15,7 +15,7 @@
 #pragma once
 
 template<typename T>
-struct ListNode{
+struct ListNode {
 	T data;
 	ListNode<T> *pred;
 	ListNode<T> *succ;

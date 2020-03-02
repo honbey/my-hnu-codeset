@@ -156,8 +156,7 @@ void List<T>::traverse(void(*visit)(T&)) {
 	for(ListNode<T> *p = header->succ; p != trailer; p = p->succ) visit(p->data);
 }
 
-template <typename T>
-template <typename VST>
-void List<T>::traverse(VST& visit) {
+template <typename T> template <typename OP>
+void List<T>::traverse(OP& visit) {
 	for(ListNode<T> *p = header->succ; p != trailer; p = p->succ) visit(p->data);
 }

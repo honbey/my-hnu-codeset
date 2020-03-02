@@ -159,7 +159,7 @@ void Vector<T>::traverse(void (*visit) (T&)) {
 	for(Rank i = 0; i < _size; i++) visit(_elem[i]); // function point
 }
 
-template<typename T> template<typename VST>
-void Vector<T>::traverse(VST &visit) {
+template<typename T> template<typename OP>
+void Vector<T>::traverse(OP &visit) {
 	for(Rank i = 0; i < _size; i++) visit(_elem[i]);
 }

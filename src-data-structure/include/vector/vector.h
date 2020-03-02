@@ -84,7 +84,7 @@ public:
 	Rank uniquify();
 
 	void traverse(void(*) (T&));
-	template<typename VST> void traverse(VST&);
+	template<typename OP> void traverse(OP&);
 };
 
 #include "vector_implementation.h"

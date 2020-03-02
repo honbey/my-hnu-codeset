@@ -1,21 +1,24 @@
 # Project Name
-PROJECT(list)
+PROJECT(Data-Structure)
 # CMake Version
 CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
- 
+
+SET(CMAKE_CXX_STANDARD 11) 
 SET(CMAKE_BUILD_TYPE "Debug")
 SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -Wall -O2")
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -O2")
-# SET(SRC_LIST src/main.cpp)
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/)
 
-# Add Source Files
-AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/src DIR_SRCS)
-# Add header files
+# Add Header files
 INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/include)
-# Add link library
+# Add Link library
 LINK_DIRECTORIES(${PROJECT_SOURCE_DIR}/lib)
 
-ADD_EXECUTABLE(${PROJECT_NAME} ${DIR_SRCS})
+# AUX_SOURCE_DIRECTORY(${PROJECT_SOURCE_DIR}/src DIR_SRCS)
+# SET(SRC_LIST src/main.cpp)
 
-#TARGET_LINK_LIBRARIES(CRNode thread)
+ADD_EXECUTABLE(binTree src/binTree.cpp)
+
+ADD_EXECUTABLE(list src/list.cpp)
+
+ADD_EXECUTABLE(vector src/vector.cpp)

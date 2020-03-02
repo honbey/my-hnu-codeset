@@ -19,7 +19,7 @@
 typedef int Rank;
 
 template<typename T>
-class List{
+class List {
 private:
 	Rank _size;
 	ListNode<T> *header;
@@ -102,7 +102,7 @@ public:
 	void reverse();
 
 	void traverse(void(*) (T&));
-    template<typename VST> void traverse(VST&);
+    template<typename OP> void traverse(OP&);
 };
 
 #include "list_implementation.h"
