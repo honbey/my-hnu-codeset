@@ -8,9 +8,9 @@
  * Date: 2019-10-23
  * Version: 0.3.0
  * 
- * Description: Comprehensive test and normalization
+ * Change Log: Comprehensive test and normalization
  * 
- * Others: For the 4th cryptography experiment.
+ * Description: For the 4th cryptography experiment.
  * Stability impact on source files: 
  *   the file will have a blank line added.
  *  

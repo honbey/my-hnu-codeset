@@ -8,9 +8,9 @@
  * Date: 2019-12-13
  * Version: 0.4.0
  * 
- * Description: Overload the operation in Galois Field.
+ * Change Log: Overload the operation in Galois Field.
  * 
- * Others: For the 5th cryptography experiment.
+ * Description: For the 5th cryptography experiment.
  * Stability impact on source files: 
  *   the file will have a blank line added.
  *  
