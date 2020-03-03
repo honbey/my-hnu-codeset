@@ -6,10 +6,10 @@
 Some code written during my undergraduate at Hainan University.
 
 #### Contents
-- [Cryptography](#user-content-cryptography-experiment)
-- [Information Theory](#user-content-information-theory-experiment)
-- [Learn OpenCV](#user-content-learn-opencv)
-- [Data Structure](#user-content-data-structure-experiment)
+- [Cryptography](#cryptography-experiment)
+- [Information Theory](#information-theory-experiment)
+- [Learn OpenCV](#learn-opencv)
+- [Data Structure](#data-structure)
 
 ---
 
