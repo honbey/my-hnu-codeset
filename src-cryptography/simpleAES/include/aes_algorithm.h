@@ -19,7 +19,7 @@
 #pragma once
 
 void simpleAES::createSBox() {
-	printf("S Box BEGIN:");
+	//printf("S Box BEGIN:");
 	uchar b[8] = { 0xf8, 0x7c, 0x3e, 0x1f,
 		0x8f, 0xc7, 0xe3, 0xf1 }; 
 	uchar c = 0x63; // initial
@@ -36,13 +36,13 @@ void simpleAES::createSBox() {
 			else setZero(_matS[i], j);
 		}
 		_matS[i] ^= c;
-		if (i % 16 == 0) printf("\n");
-		printf("%02X ", _matS[i]); // print S Box
+		//if (i % 16 == 0) printf("\n");
+		//printf("%02X ", _matS[i]); // print S Box
 	}
-	printf("\nS Box END!\n\n");
+	//printf("\nS Box END!\n\n");
 }
 void simpleAES::createISBox() {
-	printf("IS Box BEGIN:");
+	//printf("IS Box BEGIN:");
 	uchar b[8] = { 0x52, 0x29, 0x94, 0x4a,
 		0x25, 0x92, 0x49, 0xa4 };
 	uchar c = 0x05; // initial
@@ -59,10 +59,10 @@ void simpleAES::createISBox() {
 		}
 		_matIS[i] ^= c;
 		_matIS[i] = GFModInv(_matIS[i]);
-		if (i % 16 == 0) printf("\n");
-		printf("%02X ", _matIS[i]); // print IS Box
+		//if (i % 16 == 0) printf("\n");
+		//printf("%02X ", _matIS[i]); // print IS Box
 	}
-	printf("\nIS Box End!\n\n");
+	//printf("\nIS Box End!\n\n");
 }
 
 std::string simpleAES::encryption(std::string _Text) {

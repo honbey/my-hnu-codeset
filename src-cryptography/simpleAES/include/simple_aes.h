@@ -68,12 +68,12 @@ protected:
 			printf("%02X ", _key[i]);
 		}
 		_eKey = keyExpansion(_key);
-		printf("\nKey Expansion:\n");
+		/*printf("\nKey Expansion:\n");
 		for (int i = 0; i < 44; i++) {
 			if (i % 4 == 0) printf("%d\n", i / 4);
 			printf("%08X\n", _eKey[i]);
 		}
-		printf("\n");
+		printf("\n");*/
 	}
 	
 public:
