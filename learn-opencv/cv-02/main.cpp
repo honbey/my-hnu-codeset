@@ -35,6 +35,7 @@ void findContoursBasic(cv::Mat); // find contours from image
 
 /* Part 2 */
 #include "MultipleImageWindow.h"
+#include <memory>
 std::shared_ptr<MultipleImageWindow> miw;
 
 bool readFolderAndExtractFeatures

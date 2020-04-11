@@ -23,6 +23,7 @@
 #pragma once
 
 typedef struct GFPoly {
+	// class GFPoly {
 	// private:
 	uint _data, _degree = 0;
 	// public: / external interface
