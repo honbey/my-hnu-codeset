@@ -10,6 +10,13 @@ Some code written during my undergraduate at Hainan University.
 - [Information Theory](#information-theory-experiment)
 - [Learn OpenCV](#learn-opencv)
 - [Data Structure](#data-structure)
+- [Curriculum Design](#curriculum-design)
+  - [Computer Netword](#computer-network)
+  - [Database](#Database)
+  - [Network Security](#network-security)
+  - [Software Engineering](#software-engineering)
+  - [Seminar](#Seminar)
+
 
 ---
 
@@ -83,5 +90,19 @@ Refer to the course "Data Structure (Autonomous Mode)" on "XuetangX".
 #### List
 
 #### Binary tree
+
+---
+
+### Curriculum Design
+
+#### Computer Network
+
+#### Database
+
+#### Network Security
+
+#### Software Engineering
+
+#### Seminar
 
 ---
