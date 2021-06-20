@@ -12,10 +12,11 @@ Some code written during my undergraduate at Hainan University.
 - [Data Structure](#data-structure)
 - [Curriculum Design](#curriculum-design)
   - [Computer Netword](#computer-network)
-  - [Database](#Database)
+  - [Database](#database)
   - [Network Security](#network-security)
   - [Software Engineering](#software-engineering)
-  - [Seminar](#Seminar)
+  - [Seminar](#seminar)
+- [Graduation Design](#graduation-design)
 
 
 ---
@@ -104,5 +105,11 @@ Refer to the course "Data Structure (Autonomous Mode)" on "XuetangX".
 #### Software Engineering
 
 #### Seminar
+
+---
+
+## Graduation Design
+
+Our university held a graduation commencement on June 20, 2021. My college life is end.
 
 ---
